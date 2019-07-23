@@ -1,5 +1,8 @@
 import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
+import DashBoard from '@/views/dashboard'
+import navList from '@/views/dashboard/navList'
+
 class RouterGuard extends React.Component {
   render() {
     const {location, config} = this.props
@@ -13,14 +16,17 @@ class RouterGuard extends React.Component {
     }
     if (isLogin) {
       // 如果是登录状态,想跳转到登录页,重定向到主页
-      if (pathname === '/login') {
-        return <Redirect to="/" />
+      if (pathname === '/') {
+        const userType = localStorage.getItem('userType')
+        return <Redirect to={`/${userType}`} />
       } else {
         // 如果是合法路由,则跳转到相应的路由
         if (targetRouterConfig) {
-          return <Route path={pathname} component={targetRouterConfig.component}  />
+          return <Route path={pathname} component={targetRouterConfig.component}></Route>
+        } else if (!navList.includes(pathname)) {
+          return <Redirect to="/login" />
         } else {
-          return <Redirect to="/404" />
+          return <Route component={DashBoard}></Route>
         }
       }
     } else {

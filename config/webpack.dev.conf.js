@@ -6,6 +6,15 @@ module.exports = merge(baseConfig, {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
-        port: 3001
+        proxy: {
+            '/': {
+                target: 'http://localhost:3002',
+                changeOrigin: true,
+                pathRewrite: {
+                '^/': ''
+                }
+            }
+        },
+        port: 3001,
     }
 })

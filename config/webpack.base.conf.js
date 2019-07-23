@@ -37,10 +37,19 @@ module.exports = {
       {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader' ,
-        query:{
-          presets:['es2015','stage-0','react']
-        }
+        use: {
+          loader: 'babel-loader' ,
+          options: {
+            presets:['es2015','stage-0','react'],
+            plugins:[
+              ["import", { 
+                "libraryName": "antd-mobile", 
+                "style": "css" // `style: true` 会加载 less 文件
+              }],
+              "transform-decorators-legacy"
+            ]
+          },
+        } 
       },
       {
         test: /\.svg/,
