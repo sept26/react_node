@@ -6,7 +6,8 @@ let defaultState = {
   pwd: '',
   msg: '',
   redirectTo: '',
-  type: ''
+  type: '',
+  _id: ''
 }
 
 export const formData = (state = defaultState,action = {}) => {
@@ -15,6 +16,10 @@ export const formData = (state = defaultState,action = {}) => {
       return {...state, msg:'',redirectTo:getRedirectToUrl(action.payload),...action.payload}
     case type.ERROR_MSG:
       return {...state,msg: "",isAuth: false,msg: action.msg}
+    case type.LOAD_DATA:
+      return {...state, ...action.payload}
+    case type.LOGOUT:
+      return {...defaultState, redirectTo: '/login'}
     default:
       return state
   }

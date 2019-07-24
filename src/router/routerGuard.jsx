@@ -2,6 +2,10 @@ import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import DashBoard from '@/views/dashboard'
 import navList from '@/views/dashboard/navList'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {userInfo} from '@/store/login/action'
+@connect(null, {userInfo})
 
 class RouterGuard extends React.Component {
   render() {
@@ -17,6 +21,16 @@ class RouterGuard extends React.Component {
     if (isLogin) {
       // 如果是登录状态,想跳转到登录页,重定向到主页
       if (pathname === '/') {
+        axios.get('/users/info').then((resp) => {
+          let res = resp.data;
+          if(resp.status === 200){
+            if(res.code === 1){
+              this.props.history.push('/login')
+            }else{
+              this.props.userInfo(res.data)
+            }
+          }
+        })  
         const userType = localStorage.getItem('userType')
         return <Redirect to={`/${userType}`} />
       } else {

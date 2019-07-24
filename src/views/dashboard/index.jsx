@@ -52,7 +52,7 @@ class DashBoard extends Component {
             {navList.find(v => v.path === pathname).title}
           </NavBar> :null
         }
-        <div style={{marginTop:15,marginBottom:45}}>
+        <div style={{marginTop:50,marginBottom:45}}>
             <Switch>
               {
                 navList.map(v => (

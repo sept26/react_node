@@ -1,7 +1,6 @@
 
 import Login from '@/views/login'
 import ErrorPage from '@/views/error'
-import Home from '@/views/home'
 import Register from '@/views/register'
 
 const routerConfig = [

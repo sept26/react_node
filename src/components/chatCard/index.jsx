@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {WingBlank, WhiteSpace, Card} from 'antd-mobile'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom';
+@withRouter
 class chatCard extends Component {
   constructor (props) {
     super(props)

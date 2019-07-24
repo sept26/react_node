@@ -34,3 +34,26 @@ const loginError = (obj) => {
     type: type.ERROR_MSG
   }
 }
+
+// 用户信息
+export const userInfo = (data) => {
+  return dispatch=>{
+    dispatch(loadData(data))
+  }
+}
+
+const loadData = (data) => {
+  return {
+    type: type.LOAD_DATA,
+    payload: data
+  }
+}
+
+// 退出登录
+export const handleLogout = () => {
+  localStorage.removeItem('userName')
+  localStorage.removeItem('userType')
+  return {
+    type: type.LOGOUT
+  }
+}
