@@ -7,11 +7,28 @@ import Mine from '../mine'
 import {connect} from 'react-redux'
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '@/components/nav-link-bar'
+import {getChatList, msgReceive} from '@/store/chat/action'
+import PropTypes from 'prop-types'
 
 class DashBoard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  static propTypes = {
+    getChatList: PropTypes.func,
+    msgReceive: PropTypes.func
+  }
+  componentDidMount(){
+    if(!this.props.chat.chatmsg.length){
+        this.props.getChatList();
+        this.props.msgReceive();
+    }
+  }
+
   render() {
     const {pathname} = this.props.location
-    const type = this.props.formData.type || localStorage.getItem('userType')
+    const type = this.props.formData.type
     const navList = [
       {
         path: '/boss',
@@ -67,5 +84,6 @@ class DashBoard extends Component {
   }
 }
 export default connect(
-  state => state
+  state => state,
+  {getChatList, msgReceive}
 )(DashBoard)

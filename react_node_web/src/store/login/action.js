@@ -12,7 +12,6 @@ export const LoginAction = (value) => {
     }).then(res => {
       if (res.status === 200) {
         localStorage.setItem('userName', res.data.data.user)
-        localStorage.setItem('userType', res.data.data.type)
         dispatch(loginSuccess(res.data.data))
       } else {
         dispatch(loginError(res.data.data))
@@ -52,7 +51,6 @@ const loadData = (data) => {
 // 退出登录
 export const handleLogout = () => {
   localStorage.removeItem('userName')
-  localStorage.removeItem('userType')
   return {
     type: type.LOGOUT
   }

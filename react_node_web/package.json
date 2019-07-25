@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config config/webpack.dev.conf.js",
+    "start": "webpack-dev-server --open --config  config/webpack.dev.conf.js",
     "build": "webpack --config config/wepback.prod.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

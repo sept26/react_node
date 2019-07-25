@@ -4,7 +4,6 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { userInfo } from '@/store/login/action';
 import { connect } from 'react-redux';
-import { nextTick } from 'q';
 @withRouter
 @connect(
     null,
