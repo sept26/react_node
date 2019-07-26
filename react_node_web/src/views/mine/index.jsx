@@ -50,7 +50,7 @@ class Mine extends Component {
             </Item>
         </List>
       </div>
-    ):<Redirect to={this.props.formData.redirectTo}></Redirect>
+    ):<Redirect to={this.props.formData.redirectTo || '/me'}></Redirect>
   }
 }
 

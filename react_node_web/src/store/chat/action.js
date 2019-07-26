@@ -1,7 +1,7 @@
 import * as type from './../type'
 import axios from 'axios'
 import io from 'socket.io-client'
-const socket = io('ws://localhost: 3000')
+const socket = io('ws://localhost:3000')
 
 export const msgReceive = () => {
   return (dispatch, getState) => {
